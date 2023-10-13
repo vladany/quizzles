@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="headline (txt)">
+		<div class="container">
+		<br>
+		<header>
+		<h5 class="text-center">
+			Welcome,  
+			<span th:if="${fromUser != null}" th:text="${fromUser}"></span>
+			<br>
+			<span th:if="${txt != null}" th:text="${txt}"></span>
+		</h5>
+		</header>
+		<br>
+		</div>
+	</div>
+	
+	<div th:fragment="nav (all)">
+		<div class="container">
+			<nav class="navbar navbar-expand-md navbar-light bg-custom">
+				<a class="navbar-brand p-1 mr-5" th:if="${all == true}">Session</a>
+				<a class="navbar-brand p-1 mr-5" th:if="${all == false}">The Quiz</a>
+				<div class="collapse navbar-collapse " id="thenavbarDefault">
+					<ul class="navbar-nav ml-auto">
+						
+						<li class="nav-item navbar-nav p-1" th:if="${all == true}">
+							<form th:action="@{'/users/' + ${currentUser.id}}" method="post">
+								<input type="submit" class="btn btn-outline-secondary"	value="profile">
+							</form>
+						</li>
+						<li class="nav-item navbar-nav p-1"
+							th:if="${all == true and #strings.toString(currentUser.user.role) == 'ADMIN'}">
+							<form th:action="@{/users/managed}" method="post">
+								<input type="submit" class="btn btn-outline-secondary" value="managed users">
+							</form>
+						</li>
+						<li class="nav-item navbar-nav p-1" th:if="${all != true}">						
+								
+						<div class="col-xs-6 col-sm-6 col-md-6">
+						<a input type="submit" class="btn btn-outline-primary"      aria-current="page" th:href="@{/game}"> Start </a>
+					</div>
+                    				
+							</form>
+							 
+												
+							 
+				
+							 
+						</li>
+						<li class="nav-item navbar-nav p-1" th:if="${all == true}">
+							<form th:action="@{/logout}" method="post">
+								<input type="submit" class="btn btn-outline-success" value="logout">
+							</form>
+						</li>
+						
+					</ul>
+				</div>
+			</nav>
+		</div>
+		<br>
+	</div>
+
+	<div th:fragment="greeting (all)">
+		<div class="container">
+			<h5>
+			Hello <span th:if="${fromUser != null}" th:text="${fromUser}">unknown</span>
+			</h5>
+		<div>What can I do for you?</div>
+		<br>
+		</div>
+	</div>
+</body>
+</html>

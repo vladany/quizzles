@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head">
+	<meta charset="utf-8">
+</head>
+<body>
+<div th:replace="fragments/nav :: nav"></div>
+
+	<div th:include="fragments/body :: headline (txt='Start Your Quiz!' )"></div>
+	<div th:include="fragments/body :: nav (all=false)"></div>
+    <div th:include="fragments/body :: nav (all=true)"></div>
+	
+
+
+<div class="main-container container py-5 px-4">
+		<h3 class="bg-custom text-center mb-5 p-2">your last scores</h3>
+		
+		<table class="bg-dark text-light">
+			<tr>
+				<th>Score</th>
+			</tr>
+			<tr th:each="score : ${sList}">
+				<td th:text="${score.username}"></td>
+				<td th:text="${score.totalCorrect}"></td>
+			</tr>
+		</table>
+	</div>
+	<button type="submit" class="btn btn-danger d-block mx-auto mt-4">Clear ALL</button>
+	
+	
+	<div th:include="fragments/footer :: footer"></div>
+		<script>
+			var date = new Date();
+			var year = date.getFullYear();
+			document.getElementById("today").innerHTML = "&copy; QUIZZLES Studentenprojekt, "+year;
+		</script> 
+</body>
+
+</html>
+

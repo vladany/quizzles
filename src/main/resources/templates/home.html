@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head">
+	<meta charset="utf-8">
+</head>
+<body>
+<div th:replace="fragments/nav :: nav"></div>
+    <header>
+    <div class="text-center">
+        <h1>Willkommen zum Studentenprojekt</h1>
+    </div>
+    </header>
+    <main>
+      <div class="text-center">
+        <section id="projektbeschreibung">
+            <h2>Online-Quizspiel</h2>
+            <p>Ein echt cooles Quiz.</p>
+        </section>
+        <section id="team">
+            <h2>Quizzles Gruppe 29</h2>
+            
+                <li>Enes Altan Yueksel </li>
+                <li>Yalcin Zorlusoy    </li>
+                <li>Vladyslava Azrelian</li>
+                <li>Antonia Kirsch     </li>
+            
+        </section>
+        <section id="kontakt">
+            <h2>Kontakt</h2>
+            <p>enes.yueksel@stud.fra-uas.de</p>
+            <p>zorlusoy@stud.fra-uas.de</p>
+            <p>@stud.fra-uas.de</p>
+            <p>@stud.fra-uas.de</p>
+            
+        </section>
+        </div>
+    </main>
+	<div th:include="fragments/footer :: footer"></div>
+		<script>
+			var date = new Date();
+			var year = date.getFullYear();
+			document.getElementById("today").innerHTML = "&copy; QUIZZLES Studentenprojekt, "+year;
+		</script> 
+	
+	
+</body>
+</html>
+      
+
+
+
+
+
+
